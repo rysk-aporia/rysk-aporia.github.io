@@ -1,235 +1,445 @@
 <!doctype html>
 <html lang="ja">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>田中 亮介 | Ryosuke Tanaka</title>
-<meta name="description" content="田中亮介（千葉大学 環境リモートセンシング研究センター）。静止衛星リモートセンシング・大気補正・陸域生態系。">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #fbfbf9; --fg: #1d2125; --muted: #5d6670; --line: #e3e5e1;
-    --accent: #1f6f8b; --accent-soft: #e6f1f5; --card: #ffffff;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #14181b; --fg: #e6e8ea; --muted: #9aa3ab; --line: #2a3035;
-      --accent: #6cb8d4; --accent-soft: #1b2a31; --card: #1a1f23;
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>田中 亮介 | Ryosuke Tanaka</title>
+  <meta name="description" content="田中亮介（千葉大学 環境リモートセンシング研究センター）。静止衛星リモートセンシング・大気補正・陸域生態系。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fbfbf9;
+      --fg: #1d2125;
+      --muted: #5d6670;
+      --line: #e3e5e1;
+      --accent: #1f6f8b;
+      --accent-soft: #e6f1f5;
+      --card: #ffffff;
     }
-  }
-  :root[data-theme="dark"] {
-    --bg: #14181b; --fg: #e6e8ea; --muted: #9aa3ab; --line: #2a3035;
-    --accent: #6cb8d4; --accent-soft: #1b2a31; --card: #1a1f23;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--bg); color: var(--fg);
-    font-family: "Noto Sans JP", system-ui, -apple-system, sans-serif;
-    line-height: 1.75; font-size: 16px;
-  }
-  .wrap { max-width: 820px; margin: 0 auto; padding: 0 16px; }
-  header.top {
-    display: flex; justify-content: flex-end; gap: 8px; padding-top: 20px;
-  }
-  .toggle {
-    border: 1px solid var(--line); background: var(--card); color: var(--fg);
-    border-radius: 999px; padding: 4px 14px; font: inherit; font-size: 13px; cursor: pointer;
-  }
-  .toggle:hover { border-color: var(--accent); }
-  .hero { padding: 40px 0 28px; border-bottom: 1px solid var(--line); }
-  .hero h1 {
-    font-family: "Noto Serif JP", serif; font-weight: 600;
-    font-size: clamp(30px, 6vw, 42px); margin: 0; letter-spacing: .02em;
-  }
-  .hero .sub { color: var(--muted); margin: 4px 0 16px; font-size: 15px; }
-  .hero .aff { margin: 0; font-weight: 500; }
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 20px; padding: 0; list-style: none; }
-  .tags li {
-    background: var(--accent-soft); color: var(--accent);
-    padding: 2px 12px; border-radius: 999px; font-size: 13px; font-weight: 500;
-  }
-  .links { display: flex; flex-wrap: wrap; gap: 16px; font-size: 14px; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  section { padding: 32px 0 8px; }
-  h2 {
-    font-size: 13px; letter-spacing: .14em; text-transform: uppercase;
-    color: var(--muted); font-weight: 700; margin: 0 0 16px;
-  }
-  ul.timeline, ul.pubs, ul.plain { list-style: none; margin: 0; padding: 0; }
-  ul.timeline li {
-    display: grid; grid-template-columns: 150px 1fr; gap: 12px;
-    padding: 8px 0; border-bottom: 1px dashed var(--line);
-  }
-  .date { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 14px; }
-  ul.pubs li { padding: 14px 0; border-bottom: 1px dashed var(--line); }
-  .pub-title { font-weight: 500; }
-  .pub-authors { font-size: 14px; color: var(--muted); }
-  .pub-authors b { color: var(--fg); font-weight: 600; }
-  .pub-meta { font-size: 14px; }
-  .badge {
-    display: inline-block; font-size: 11px; border: 1px solid var(--line);
-    border-radius: 4px; padding: 0 6px; margin-left: 6px; color: var(--muted); vertical-align: 1px;
-  }
-  .badge.oral { border-color: var(--accent); color: var(--accent); }
-  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; }
-  ul.plain li { padding: 6px 0; border-bottom: 1px dashed var(--line); }
-  ul.plain .small { color: var(--muted); font-size: 13px; display: block; }
-  footer { color: var(--muted); font-size: 13px; padding: 40px 0 48px; }
-  [data-lang-show="en"] .ja, [data-lang-show="ja"] .en { display: none; }
-  @media (max-width: 600px) {
-    ul.timeline li { grid-template-columns: 1fr; gap: 0; }
-    .grid2 { grid-template-columns: 1fr; }
-  }
-</style>
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #14181b;
+        --fg: #e6e8ea;
+        --muted: #9aa3ab;
+        --line: #2a3035;
+        --accent: #6cb8d4;
+        --accent-soft: #1b2a31;
+        --card: #1a1f23;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #14181b;
+      --fg: #e6e8ea;
+      --muted: #9aa3ab;
+      --line: #2a3035;
+      --accent: #6cb8d4;
+      --accent-soft: #1b2a31;
+      --card: #1a1f23;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Noto Sans JP", system-ui, -apple-system, sans-serif;
+      line-height: 1.75;
+      font-size: 16px;
+    }
+
+    .wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    header.top {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      padding-top: 20px;
+    }
+
+    .toggle {
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--fg);
+      border-radius: 999px;
+      padding: 4px 14px;
+      font: inherit;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .toggle:hover {
+      border-color: var(--accent);
+    }
+
+    .hero {
+      padding: 40px 0 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero h1 {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 600;
+      font-size: clamp(30px, 6vw, 42px);
+      margin: 0;
+      letter-spacing: .02em;
+    }
+
+    .hero .sub {
+      color: var(--muted);
+      margin: 4px 0 16px;
+      font-size: 15px;
+    }
+
+    .hero .aff {
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 20px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tags li {
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 2px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 14px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 32px 0 8px;
+    }
+
+    h2 {
+      font-size: 13px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+      margin: 0 0 16px;
+    }
+
+    ul.timeline,
+    ul.pubs,
+    ul.plain {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul.timeline li {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .date {
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      font-size: 14px;
+    }
+
+    ul.pubs li {
+      padding: 14px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .pub-title {
+      font-weight: 500;
+    }
+
+    .pub-authors {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .pub-authors b {
+      color: var(--fg);
+      font-weight: 600;
+    }
+
+    .pub-meta {
+      font-size: 14px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 0 6px;
+      margin-left: 6px;
+      color: var(--muted);
+      vertical-align: 1px;
+    }
+
+    .badge.oral {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .grid2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 40px;
+    }
+
+    ul.plain li {
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    ul.plain .small {
+      color: var(--muted);
+      font-size: 13px;
+      display: block;
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+      padding: 40px 0 48px;
+    }
+
+    [data-lang-show="en"] .ja,
+    [data-lang-show="ja"] .en {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      ul.timeline li {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .grid2 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body data-lang-show="ja">
-<div class="wrap">
-  <header class="top">
-    <button class="toggle" id="langBtn" type="button">English</button>
-    <button class="toggle" id="themeBtn" type="button" aria-label="Toggle theme">◐</button>
-  </header>
+  <div class="wrap">
+    <header class="top">
+      <button class="toggle" id="langBtn" type="button">English</button>
+      <button class="toggle" id="themeBtn" type="button" aria-label="Toggle theme">◐</button>
+    </header>
 
-  <div class="hero">
-    <h1><span class="ja">田中 亮介</span><span class="en">Ryosuke Tanaka</span></h1>
-    <p class="sub"><span class="ja">Ryosuke Tanaka</span><span class="en">田中 亮介</span></p>
-    <p class="aff">
-      <span class="ja">千葉大学 環境リモートセンシング研究センター（CEReS）</span>
-      <span class="en">Center for Environmental Remote Sensing (CEReS), Chiba University</span>
-    </p>
-    <ul class="tags">
-      <li><span class="ja">リモートセンシング</span><span class="en">Remote Sensing</span></li>
-      <li><span class="ja">静止衛星</span><span class="en">Geostationary Satellites</span></li>
-      <li><span class="ja">大気補正</span><span class="en">Atmospheric Correction</span></li>
-      <li><span class="ja">陸域生態系</span><span class="en">Terrestrial Ecosystem</span></li>
-    </ul>
-    <div class="links">
-      <a href="https://researchmap.jp/tanakaryosuke" target="_blank" rel="noopener">researchmap</a>
-      <a href="https://github.com/rysk-aporia" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://jglobal.jst.go.jp/detail?JGLOBAL_ID=202601003372115679" target="_blank" rel="noopener">J-GLOBAL</a>
-      <a href="https://www.linkedin.com/in/ryosuke-tanaka-3625513b3/" target="_blank" rel="noopener">LinkedIn</a>
+    <div class="hero">
+      <h1><span class="ja">田中 亮介</span><span class="en">Ryosuke Tanaka</span></h1>
+      <p class="sub"><span class="ja">Ryosuke Tanaka</span><span class="en">田中 亮介</span></p>
+      <p class="aff">
+        <span class="ja">千葉大学 環境リモートセンシング研究センター（CEReS）</span>
+        <span class="en">Center for Environmental Remote Sensing (CEReS), Chiba University</span>
+      </p>
+      <ul class="tags">
+        <li><span class="ja">リモートセンシング</span><span class="en">Remote Sensing</span></li>
+        <li><span class="ja">静止衛星</span><span class="en">Geostationary Satellites</span></li>
+        <li><span class="ja">大気補正</span><span class="en">Atmospheric Correction</span></li>
+        <li><span class="ja">陸域生態系</span><span class="en">Terrestrial Ecosystem</span></li>
+      </ul>
+      <div class="links">
+        <a href="https://researchmap.jp/tanakaryosuke" target="_blank" rel="noopener">researchmap</a>
+        <a href="https://github.com/rysk-aporia" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://jglobal.jst.go.jp/detail?JGLOBAL_ID=202601003372115679" target="_blank"
+          rel="noopener">J-GLOBAL</a>
+        <a href="https://www.linkedin.com/in/ryosuke-tanaka-3625513b3/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
     </div>
+
+    <section>
+      <h2><span class="ja">研究分野</span><span class="en">Research</span></h2>
+      <p class="ja">
+        ひまわり8/9号搭載のAHIをはじめとする静止衛星データを用いて、地表面反射率の推定と大気補正手法の研究に取り組んでいます。エアロゾル・大気データセットの違いが推定結果に与える影響の評価や、アルゴリズム間（千葉大学CEReS、NASA
+        GeoNEX）の相互比較を通じて、陸域生態系モニタリングの高度化に貢献することを目指しています。<br><span style="color:var(--muted);font-size:14px">分野：環境・農学
+          ／ 環境動態解析</span></p>
+      <p class="en">I study land surface reflectance retrieval and atmospheric correction using geostationary satellite
+        data, particularly from the Advanced Himawari Imager (AHI) aboard Himawari-8/9. By assessing how different aerosol
+        and atmospheric datasets affect retrieval results, and by intercomparing retrieval algorithms (Chiba University
+        CEReS and NASA GeoNEX), I aim to advance terrestrial ecosystem monitoring.<br><span
+          style="color:var(--muted);font-size:14px">Field: Environmental science / Environmental dynamics</span></p>
+    </section>
+
+    <section>
+      <h2><span class="ja">学歴・経歴</span><span class="en">Education &amp; Experience</span></h2>
+      <ul class="timeline">
+        <li><span class="date">2026.04 –</span>
+          <span><span class="ja">千葉大学 大学院融合理工学府 地球環境科学専攻 リモートセンシングコース</span><span class="en">Division of Earth and
+              Environmental Sciences (Environmental Remote Sensing), Graduate School of Science and Engineering, Chiba
+              University</span></span>
+        </li>
+        <li><span class="date">2026.04 –</span>
+          <span><span class="ja">千葉大学 環境リモートセンシング研究センター</span><span class="en">Center for Environmental Remote Sensing,
+              Chiba University</span></span>
+        </li>
+        <li><span class="date">2024.04 – 2026.03</span>
+          <span><span class="ja">木更津工業高等専門学校 専攻科 環境建設工学専攻</span><span class="en">Advanced Course, Department of Civil
+              and Environmental Course, NIT (KOSEN), Kisarazu College</span></span>
+        </li>
+        <li><span class="date">2019.04 – 2024.03</span>
+          <span><span class="ja">木更津工業高等専門学校 環境都市工学科</span><span class="en">Department of Civil Engineering, NIT
+              (KOSEN), Kisarazu College</span></span>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="ja">学会発表</span><span class="en">Presentations</span></h2>
+      <ul class="pubs">
+        <li>
+          <div class="pub-title"><span class="ja">ひまわり地表面反射率推定アルゴリズムの相互比較</span><span class="en">Intercomparison of land
+              surface reflectance retrieval algorithms for Himawari-8/9 AHI</span><span class="badge">Poster</span>
+          </div>
+          <div class="pub-authors"><span class="ja"><b>田中亮介</b>, 市井和仁, 越野真都佳, 笹川大河, 李偉, 張北辰, 山本雄平, 楊偉, Wang
+              Weile</span><span class="en"><b>Ryosuke Tanaka</b>, Kazuhito Ichii, Madoka Koshino, Taiga Sasagawa, Wei
+              Li, Beichen Zhang, Yuhei Yamamoto, Wei Yang, Weile Wang</span></div>
+          <div class="pub-meta"><span class="ja">日本リモートセンシング学会 第81回（令和8年度秋季）学術講演会</span><span class="en">81st Conference
+              of the Remote Sensing Society of Japan (Autumn 2026)</span>, 2026.11</div>
+        </li>
+        <li>
+          <div class="pub-title">Impact of different atmospheric datasets on surface reflectance retrieval for
+            Himawari-8/9 AHI<span class="badge oral">Oral</span></div>
+          <div class="pub-authors"><b>Ryosuke Tanaka</b>, Wei Li, Beichen Zhang, Yuhei Yamamoto, Wei Yang, Kazuhito
+            Ichii</div>
+          <div class="pub-meta">SPIE Asia-Pacific Remote Sensing 2026, 2026.11</div>
+        </li>
+        <li>
+          <div class="pub-title">ひまわり地表面反射率推定の不確実性評価 ―エアロゾルデータと大気補正手法の比較―<span class="badge">Poster</span></div>
+          <div class="pub-meta">第4回 若手による地球観測衛星研究連絡会 × 地球観測衛星による大気・海洋・陸面相互作用に関する研究集会, 2026.09</div>
+        </li>
+        <li>
+          <div class="pub-title">Impact of Different Aerosol Datasets on Surface Reflectance Retrieval for Himawari-8/9
+            AHI<span class="badge">Poster</span></div>
+          <div class="pub-authors"><b>Ryosuke Tanaka</b>, Wei Li, Yuhei Yamamoto, Kazuhito Ichii</div>
+          <div class="pub-meta">The 4th Expert Workshop on Advancing International Constellation of Geostationary
+            Satellites for Terrestrial Monitoring, 2026.05</div>
+        </li>
+        <li>
+          <div class="pub-title">時系列衛星観測データに対する大気補正処理の違いが土地利用土地被覆の分類性能に与える影響<span class="badge">Poster</span></div>
+          <div class="pub-authors"><b>田中亮介</b>, 佐久間東陽, 山本雄平, 市井和仁, 島﨑彦人</div>
+          <div class="pub-meta">日本リモートセンシング学会 第79回（令和7年度秋季）学術講演会, 2025.11</div>
+        </li>
+        <li>
+          <div class="pub-title">時系列衛星観測データセットの構築方法の違いが土地利用土地被覆の予測性能に与える影響の評価</div>
+          <div class="pub-authors"><b>田中亮介</b>, 佐久間東陽, 亀山哲, 伊禮聡, 島﨑彦人</div>
+          <div class="pub-meta">日本リモートセンシング学会 第78回（令和7年度春季）学術講演会, 2025.06</div>
+        </li>
+        <li>
+          <div class="pub-title">Vegetation Cover Mapping to Support the Estimation of Trace Gas Emissions from
+            Prescribed Grassland Burning Events<span class="badge">Poster</span></div>
+          <div class="pub-authors"><b>Ryosuke Tanaka</b>, Asahi Sakuma, Hiroto Shimazaki</div>
+          <div class="pub-meta">10th International Workshop on Effective Engineering Education (IWEEE 2024), 2024.10
+          </div>
+        </li>
+        <li>
+          <div class="pub-title">UAV空撮画像と深層学習手法を用いた切り株の自動検出手法の基礎検討<span class="badge">Poster</span></div>
+          <div class="pub-authors"><b>田中亮介</b>, 林悠介, 井筒憲司, 佐久間東陽, 島﨑彦人</div>
+          <div class="pub-meta">日本リモートセンシング学会 第76回（令和6年度春季）学術講演会, 2024.06</div>
+        </li>
+        <li>
+          <div class="pub-title">A preliminary study on deep-learning method for detecting stumps from
+            UAV-photogrammetry imagery<span class="badge">Poster</span></div>
+          <div class="pub-authors"><b>Ryosuke Tanaka</b>, Hiroto Shimazaki</div>
+          <div class="pub-meta">9th International Workshop on Effective Engineering Education (IWEEE 2023), 2023.10
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="grid2">
+      <div>
+        <h2><span class="ja">担当経験のある授業</span><span class="en">Teaching</span></h2>
+        <ul class="plain">
+          <li><span class="ja">宇宙からの地球表層観測</span><span class="en">Earth Observation from Space</span><span
+              class="small"><span class="ja">千葉大学</span><span class="en">Chiba University</span></span></li>
+          <li><span class="ja">測量学</span><span class="en">Surveying</span><span class="small"><span
+                class="ja">千葉大学</span><span class="en">Chiba University</span></span></li>
+          <li><span class="ja">測量実習</span><span class="en">Surveying Practicum</span><span class="small"><span
+                class="ja">木更津工業高等専門学校</span><span class="en">NIT (KOSEN), Kisarazu College</span></span></li>
+        </ul>
+      </div>
+      <div>
+        <h2><span class="ja">所属学会</span><span class="en">Memberships</span></h2>
+        <ul class="plain">
+          <li><span class="ja">日本地球惑星科学連合</span><span class="en">Japan Geoscience Union</span><span
+              class="small">2026.04 –</span></li>
+          <li><span class="ja">日本リモートセンシング学会</span><span class="en">The Remote Sensing Society of Japan</span><span
+              class="small">2024.04 –</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <span class="ja">最新の業績は <a href="https://researchmap.jp/tanakaryosuke">researchmap</a> をご覧ください。</span>
+      <span class="en">See <a href="https://researchmap.jp/tanakaryosuke">researchmap</a> for the latest
+        achievements.</span>
+      <br>© 2026 Ryosuke Tanaka
+    </footer>
   </div>
-
-  <section>
-    <h2><span class="ja">研究分野</span><span class="en">Research</span></h2>
-    <p class="ja">ひまわり8/9号（AHI）をはじめとする静止衛星データを用いた地表面反射率推定と大気補正手法の評価に取り組んでいます。エアロゾル・大気データセットの違いが推定結果に与える影響や、アルゴリズム間の相互比較を通じて、陸域生態系モニタリングの高度化を目指しています。<br><span style="color:var(--muted);font-size:14px">分野：環境・農学 ／ 環境動態解析</span></p>
-    <p class="en">I study land surface reflectance retrieval and atmospheric correction using geostationary satellite data, especially Himawari-8/9 AHI. Through intercomparison of retrieval algorithms and assessment of how aerosol and atmospheric datasets affect the results, I aim to improve terrestrial ecosystem monitoring.<br><span style="color:var(--muted);font-size:14px">Field: Environmental science / Environmental dynamics</span></p>
-  </section>
-
-  <section>
-    <h2><span class="ja">学歴・経歴</span><span class="en">Education &amp; Experience</span></h2>
-    <ul class="timeline">
-      <li><span class="date">2026.04 –</span>
-        <span><span class="ja">千葉大学 大学院融合理工学府 地球環境科学専攻 リモートセンシングコース</span><span class="en">Division of Earth and Environmental Sciences (Environmental Remote Sensing), Graduate School of Science and Engineering, Chiba University</span></span></li>
-      <li><span class="date">2026.04 –</span>
-        <span><span class="ja">千葉大学 環境リモートセンシング研究センター</span><span class="en">Center for Environmental Remote Sensing, Chiba University</span></span></li>
-      <li><span class="date">2024.04 – 2026.03</span>
-        <span><span class="ja">木更津工業高等専門学校 専攻科 環境建設工学専攻</span><span class="en">Advanced Course, Department of Civil and Environmental Course, NIT (KOSEN), Kisarazu College</span></span></li>
-      <li><span class="date">2019.04 – 2024.03</span>
-        <span><span class="ja">木更津工業高等専門学校 環境都市工学科</span><span class="en">Department of Civil Engineering, NIT (KOSEN), Kisarazu College</span></span></li>
-    </ul>
-  </section>
-
-  <section>
-    <h2><span class="ja">学会発表</span><span class="en">Presentations</span></h2>
-    <ul class="pubs">
-      <li>
-        <div class="pub-title"><span class="ja">ひまわり地表面反射率推定アルゴリズムの相互比較</span><span class="en">Intercomparison of land surface reflectance retrieval algorithms for Himawari-8/9 AHI</span><span class="badge">Poster</span></div>
-        <div class="pub-authors"><span class="ja"><b>田中亮介</b>, 市井和仁, 越野真都佳, 笹川大河, 李偉, 張北辰, 山本雄平, 楊偉, Wang Weile</span><span class="en"><b>Ryosuke Tanaka</b>, Kazuhito Ichii, Madoka Koshino, Taiga Sasagawa, Wei Li, Beichen Zhang, Yuhei Yamamoto, Wei Yang, Weile Wang</span></div>
-        <div class="pub-meta"><span class="ja">日本リモートセンシング学会 第81回（令和8年度秋季）学術講演会</span><span class="en">81st Conference of the Remote Sensing Society of Japan (Autumn 2026)</span>, 2026.11</div>
-      </li>
-      <li>
-        <div class="pub-title">Impact of different atmospheric datasets on surface reflectance retrieval for Himawari-8/9 AHI<span class="badge oral">Oral</span></div>
-        <div class="pub-authors"><b>Ryosuke Tanaka</b>, Wei Li, Beichen Zhang, Yuhei Yamamoto, Wei Yang, Kazuhito Ichii</div>
-        <div class="pub-meta">SPIE Asia-Pacific Remote Sensing 2026, 2026.11</div>
-      </li>
-      <li>
-        <div class="pub-title">ひまわり地表面反射率推定の不確実性評価 ―エアロゾルデータと大気補正手法の比較―<span class="badge">Poster</span></div>
-        <div class="pub-meta">第4回 若手による地球観測衛星研究連絡会 × 地球観測衛星による大気・海洋・陸面相互作用に関する研究集会, 2026.09</div>
-      </li>
-      <li>
-        <div class="pub-title">Impact of Different Aerosol Datasets on Surface Reflectance Retrieval for Himawari-8/9 AHI<span class="badge">Poster</span></div>
-        <div class="pub-authors"><b>Ryosuke Tanaka</b>, Wei Li, Yuhei Yamamoto, Kazuhito Ichii</div>
-        <div class="pub-meta">The 4th Expert Workshop on Advancing International Constellation of Geostationary Satellites for Terrestrial Monitoring, 2026.05</div>
-      </li>
-      <li>
-        <div class="pub-title">時系列衛星観測データに対する大気補正処理の違いが土地利用土地被覆の分類性能に与える影響<span class="badge">Poster</span></div>
-        <div class="pub-authors"><b>田中亮介</b>, 佐久間東陽, 山本雄平, 市井和仁, 島﨑彦人</div>
-        <div class="pub-meta">日本リモートセンシング学会 第79回（令和7年度秋季）学術講演会, 2025.11</div>
-      </li>
-      <li>
-        <div class="pub-title">時系列衛星観測データセットの構築方法の違いが土地利用土地被覆の予測性能に与える影響の評価</div>
-        <div class="pub-authors"><b>田中亮介</b>, 佐久間東陽, 亀山哲, 伊禮聡, 島﨑彦人</div>
-        <div class="pub-meta">日本リモートセンシング学会 第78回（令和7年度春季）学術講演会, 2025.06</div>
-      </li>
-      <li>
-        <div class="pub-title">Vegetation Cover Mapping to Support the Estimation of Trace Gas Emissions from Prescribed Grassland Burning Events<span class="badge">Poster</span></div>
-        <div class="pub-authors"><b>Ryosuke Tanaka</b>, Asahi Sakuma, Hiroto Shimazaki</div>
-        <div class="pub-meta">10th International Workshop on Effective Engineering Education (IWEEE 2024), 2024.10</div>
-      </li>
-      <li>
-        <div class="pub-title">UAV空撮画像と深層学習手法を用いた切り株の自動検出手法の基礎検討<span class="badge">Poster</span></div>
-        <div class="pub-authors"><b>田中亮介</b>, 林悠介, 井筒憲司, 佐久間東陽, 島﨑彦人</div>
-        <div class="pub-meta">日本リモートセンシング学会 第76回（令和6年度春季）学術講演会, 2024.06</div>
-      </li>
-      <li>
-        <div class="pub-title">A preliminary study on deep-learning method for detecting stumps from UAV-photogrammetry imagery<span class="badge">Poster</span></div>
-        <div class="pub-authors"><b>Ryosuke Tanaka</b>, Hiroto Shimazaki</div>
-        <div class="pub-meta">9th International Workshop on Effective Engineering Education (IWEEE 2023), 2023.10</div>
-      </li>
-    </ul>
-  </section>
-
-  <section class="grid2">
-    <div>
-      <h2><span class="ja">担当経験のある授業</span><span class="en">Teaching</span></h2>
-      <ul class="plain">
-        <li><span class="ja">宇宙からの地球表層観測</span><span class="en">Earth Observation from Space</span><span class="small"><span class="ja">千葉大学</span><span class="en">Chiba University</span></span></li>
-        <li><span class="ja">測量学</span><span class="en">Surveying</span><span class="small"><span class="ja">千葉大学</span><span class="en">Chiba University</span></span></li>
-        <li><span class="ja">測量実習</span><span class="en">Surveying Practicum</span><span class="small"><span class="ja">木更津工業高等専門学校</span><span class="en">NIT (KOSEN), Kisarazu College</span></span></li>
-      </ul>
-    </div>
-    <div>
-      <h2><span class="ja">所属学会</span><span class="en">Memberships</span></h2>
-      <ul class="plain">
-        <li><span class="ja">日本地球惑星科学連合</span><span class="en">Japan Geoscience Union</span><span class="small">2026.04 –</span></li>
-        <li><span class="ja">日本リモートセンシング学会</span><span class="en">The Remote Sensing Society of Japan</span><span class="small">2024.04 –</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <footer>
-    <span class="ja">最新の業績は <a href="https://researchmap.jp/tanakaryosuke">researchmap</a> をご覧ください。</span>
-    <span class="en">See <a href="https://researchmap.jp/tanakaryosuke">researchmap</a> for the latest achievements.</span>
-    <br>© 2026 Ryosuke Tanaka
-  </footer>
-</div>
-<script>
-  (function () {
-    var body = document.body, root = document.documentElement;
-    var langBtn = document.getElementById('langBtn'), themeBtn = document.getElementById('themeBtn');
-    function get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
-    function set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
-    function applyLang(l) {
-      body.setAttribute('data-lang-show', l);
-      root.lang = l;
-      langBtn.textContent = l === 'ja' ? 'English' : '日本語';
-    }
-    var lang = get('lang') || ((navigator.language || 'ja').indexOf('ja') === 0 ? 'ja' : 'en');
-    applyLang(lang);
-    langBtn.onclick = function () { lang = lang === 'ja' ? 'en' : 'ja'; applyLang(lang); set('lang', lang); };
-    var theme = get('theme');
-    if (theme) root.setAttribute('data-theme', theme);
-    themeBtn.onclick = function () {
-      var dark = root.getAttribute('data-theme') ? root.getAttribute('data-theme') === 'dark'
-        : window.matchMedia('(prefers-color-scheme: dark)').matches;
-      theme = dark ? 'light' : 'dark';
-      root.setAttribute('data-theme', theme); set('theme', theme);
-    };
-  })();
-</script>
+  <script>
+    (function () {
+      var body = document.body, root = document.documentElement;
+      var langBtn = document.getElementById('langBtn'), themeBtn = document.getElementById('themeBtn');
+      function get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+      function set(k, v) { try { localStorage.setItem(k, v); } catch (e) { } }
+      function applyLang(l) {
+        body.setAttribute('data-lang-show', l);
+        root.lang = l;
+        langBtn.textContent = l === 'ja' ? 'English' : '日本語';
+      }
+      var lang = get('lang') || ((navigator.language || 'ja').indexOf('ja') === 0 ? 'ja' : 'en');
+      applyLang(lang);
+      langBtn.onclick = function () { lang = lang === 'ja' ? 'en' : 'ja'; applyLang(lang); set('lang', lang); };
+      var theme = get('theme');
+      if (theme) root.setAttribute('data-theme', theme);
+      themeBtn.onclick = function () {
+        var dark = root.getAttribute('data-theme') ? root.getAttribute('data-theme') === 'dark'
+          : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        theme = dark ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme); set('theme', theme);
+      };
+    })();
+  </script>
 </body>
+
 </html>
