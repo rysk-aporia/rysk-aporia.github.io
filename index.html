@@ -8,7 +8,8 @@
   <meta name="description" content="田中亮介（千葉大学 環境リモートセンシング研究センター）。静止衛星リモートセンシング・大気補正・陸域生態系。">
   <style>
     :root {
-      --bg: #ffffff;
+      --bg: #f4f7fc;
+      --sky: #7fb8ff;
       --ink: #0e2742;
       --blue: #1f5fbf;
       --muted: #6b7c92;
@@ -34,7 +35,6 @@
       font-feature-settings: "palt";
       -webkit-font-smoothing: antialiased;
       overflow-wrap: anywhere;
-      border-top: 4px solid var(--ink);
       counter-reset: sec;
     }
 
@@ -52,6 +52,32 @@
     a { color: var(--blue); text-decoration: none; }
     a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
+    /* masthead: night-side Earth seen from geostationary orbit */
+    .masthead {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background:
+        radial-gradient(ellipse 70% 55% at 88% 0%, rgba(80, 140, 255, .22), transparent 70%),
+        radial-gradient(circle at 92% 165%, #0b3270 0 52%, rgba(120, 190, 255, .75) 52.6%, rgba(70, 140, 240, .25) 54.5%, transparent 62%),
+        linear-gradient(165deg, #020815 0%, #061633 50%, #0a2a5c 100%);
+      border-bottom: 1px solid rgba(127, 184, 255, .35);
+    }
+    .masthead::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(127, 184, 255, .07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(127, 184, 255, .07) 1px, transparent 1px);
+      background-size: 56px 56px;
+      -webkit-mask-image: linear-gradient(105deg, #000 0%, rgba(0, 0, 0, .25) 60%, transparent 85%);
+      mask-image: linear-gradient(105deg, #000 0%, rgba(0, 0, 0, .25) 60%, transparent 85%);
+      pointer-events: none;
+    }
+    .masthead > .wrap { position: relative; z-index: 1; }
+    .masthead ::selection { background: var(--sky); color: #020815; }
+
     /* header */
     header.top {
       display: flex;
@@ -61,25 +87,24 @@
       font-size: 11px;
       letter-spacing: .28em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: rgba(255, 255, 255, .6);
     }
 
     .toggle {
       background: none;
       border: 0;
-      border-bottom: 1px solid var(--ink);
-      color: var(--ink);
+      border-bottom: 1px solid rgba(255, 255, 255, .6);
+      color: #fff;
       font: inherit;
       letter-spacing: .2em;
       padding: 2px 0;
       cursor: pointer;
     }
-    .toggle:hover { color: var(--blue); border-color: var(--blue); }
+    .toggle:hover { color: var(--sky); border-color: var(--sky); }
 
     /* hero */
     .hero {
-      padding: 120px 0 80px;
-      border-bottom: 1px solid var(--ink);
+      padding: 120px 0 96px;
     }
 
     .hero h1 {
@@ -88,6 +113,7 @@
       line-height: 1.15;
       letter-spacing: .14em;
       margin: 0;
+      text-shadow: 0 0 40px rgba(80, 150, 255, .35);
     }
 
     .hero .sub {
@@ -95,13 +121,13 @@
       font-size: 12px;
       letter-spacing: .42em;
       text-transform: uppercase;
-      color: var(--blue);
+      color: var(--sky);
     }
 
     .hero .aff {
       margin: 0;
       padding-left: 16px;
-      border-left: 2px solid var(--blue);
+      border-left: 2px solid var(--sky);
       font-size: 15px;
       line-height: 1.7;
     }
@@ -113,12 +139,12 @@
       padding: 0;
       list-style: none;
       font-size: 13px;
-      color: var(--muted);
+      color: rgba(255, 255, 255, .72);
     }
     .tags li + li::before {
       content: "/";
       margin: 0 12px;
-      color: var(--line);
+      color: rgba(127, 184, 255, .45);
     }
 
     .links {
@@ -128,16 +154,16 @@
       margin-top: 56px;
     }
     .links a {
-      color: var(--ink);
+      color: #fff;
       font-size: 11px;
       letter-spacing: .24em;
       text-transform: uppercase;
       padding-bottom: 6px;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(255, 255, 255, .25);
       transition: color .2s, border-color .2s;
     }
-    .links a::after { content: " \2197"; color: var(--blue); }
-    .links a:hover { color: var(--blue); border-color: var(--blue); text-decoration: none; }
+    .links a::after { content: " \2197"; color: var(--sky); }
+    .links a:hover { color: var(--sky); border-color: var(--sky); text-decoration: none; }
 
     /* sections */
     section {
@@ -249,7 +275,12 @@
 
     @media (max-width: 720px) {
       .wrap { padding: 0 16px; }
-      .hero { padding: 72px 0 56px; }
+      .hero { padding: 72px 0 72px; }
+      .masthead {
+        background:
+          radial-gradient(circle at 100% 130%, #0b3270 0 48%, rgba(120, 190, 255, .7) 49%, rgba(70, 140, 240, .22) 51.5%, transparent 60%),
+          linear-gradient(165deg, #020815 0%, #061633 50%, #0a2a5c 100%);
+      }
       .hero h1 { letter-spacing: .08em; }
       section { grid-template-columns: minmax(0, 1fr); padding: 56px 0; }
       section > *, section > h2 { grid-column: 1; grid-row: auto; }
@@ -260,6 +291,7 @@
 </head>
 
 <body data-lang-show="ja">
+  <div class="masthead">
   <div class="wrap">
     <header class="top">
       <span>R. Tanaka</span>
@@ -287,7 +319,10 @@
         <a href="https://www.linkedin.com/in/ryosuke-tanaka-3625513b3/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
+  </div>
+  </div>
 
+  <div class="wrap">
     <section>
       <h2><span class="ja">研究分野</span><span class="en">Research</span></h2>
       <p class="ja">
