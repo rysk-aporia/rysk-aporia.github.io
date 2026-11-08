@@ -25,7 +25,7 @@
 
     body {
       margin: 0;
-      background: var(--bg);
+      background: #020815;
       color: var(--ink);
       font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "Hiragino Sans", sans-serif;
       font-weight: 500;
@@ -47,6 +47,49 @@
       max-width: 960px;
       margin: 0 auto;
       padding: 0 32px;
+    }
+
+    /* space backdrop visible in the side margins */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(1px 1px at 23px 41px, rgba(255, 255, 255, .9), transparent),
+        radial-gradient(1px 1px at 141px 97px, rgba(255, 255, 255, .6), transparent),
+        radial-gradient(1.5px 1.5px at 87px 163px, rgba(190, 220, 255, .9), transparent),
+        radial-gradient(1px 1px at 199px 12px, rgba(255, 255, 255, .5), transparent),
+        radial-gradient(1px 1px at 61px 211px, rgba(255, 255, 255, .7), transparent),
+        radial-gradient(1px 1px at 177px 233px, rgba(255, 255, 255, .45), transparent);
+      background-size: 240px 240px;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(2px 2px at 113px 287px, rgba(200, 225, 255, .95), transparent),
+        radial-gradient(1.5px 1.5px at 389px 71px, rgba(255, 255, 255, .8), transparent),
+        radial-gradient(1px 1px at 251px 401px, rgba(255, 255, 255, .6), transparent),
+        radial-gradient(ellipse 45% 35% at 8% 30%, rgba(60, 110, 230, .28), transparent 70%),
+        radial-gradient(ellipse 40% 40% at 94% 62%, rgba(40, 150, 220, .22), transparent 70%),
+        radial-gradient(circle 1720px at 50% calc(100% + 1450px), #0b3270 0 1600px, rgba(120, 190, 255, .55) 1612px, rgba(70, 140, 240, .18) 1640px, transparent 1720px),
+        linear-gradient(180deg, #020815 0%, #051330 60%, #08214a 100%);
+      background-size: 460px 460px, 460px 460px, 460px 460px, auto, auto, auto, auto;
+    }
+    body::before { z-index: -1; }
+    body::after { z-index: -2; }
+
+    .sheet {
+      max-width: 1024px;
+      padding: 0 64px;
+      margin-bottom: 120px;
+      background: var(--bg);
+      box-shadow: 0 0 0 1px rgba(127, 184, 255, .18), 0 40px 120px rgba(0, 0, 0, .55);
     }
 
     a { color: var(--blue); text-decoration: none; }
@@ -274,7 +317,8 @@
     [data-lang-show="ja"] .en { display: none; }
 
     @media (max-width: 720px) {
-      .wrap { padding: 0 16px; }
+      .wrap, .sheet { padding: 0 16px; }
+      .sheet { margin-bottom: 0; box-shadow: none; }
       .hero { padding: 72px 0 72px; }
       .masthead {
         background:
@@ -322,7 +366,7 @@
   </div>
   </div>
 
-  <div class="wrap">
+  <div class="wrap sheet">
     <section>
       <h2><span class="ja">研究分野</span><span class="en">Research</span></h2>
       <p class="ja">
