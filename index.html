@@ -6,254 +6,255 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>田中 亮介 | Ryosuke Tanaka</title>
   <meta name="description" content="田中亮介（千葉大学 環境リモートセンシング研究センター）。静止衛星リモートセンシング・大気補正・陸域生態系。">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600&display=swap"
-    rel="stylesheet">
   <style>
     :root {
-      --bg: #fbfbf9;
-      --fg: #1d2125;
-      --muted: #5d6670;
-      --line: #e3e5e1;
-      --accent: #1f6f8b;
-      --accent-soft: #e6f1f5;
-      --card: #ffffff;
+      --bg: #ffffff;
+      --ink: #0e2742;
+      --blue: #1f5fbf;
+      --muted: #6b7c92;
+      --line: #dfe6ef;
+      color-scheme: light;
     }
 
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --bg: #14181b;
-        --fg: #e6e8ea;
-        --muted: #9aa3ab;
-        --line: #2a3035;
-        --accent: #6cb8d4;
-        --accent-soft: #1b2a31;
-        --card: #1a1f23;
-      }
-    }
+    * { box-sizing: border-box; }
 
-    :root[data-theme="dark"] {
-      --bg: #14181b;
-      --fg: #e6e8ea;
-      --muted: #9aa3ab;
-      --line: #2a3035;
-      --accent: #6cb8d4;
-      --accent-soft: #1b2a31;
-      --card: #1a1f23;
-    }
+    ::selection { background: var(--blue); color: #fff; }
 
-    * {
-      box-sizing: border-box;
-    }
+    html { -webkit-text-size-adjust: 100%; }
 
     body {
       margin: 0;
       background: var(--bg);
-      color: var(--fg);
-      font-family: "Noto Sans JP", system-ui, -apple-system, sans-serif;
-      line-height: 1.75;
-      font-size: 16px;
+      color: var(--ink);
+      font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "Hiragino Sans", sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 1.9;
+      letter-spacing: .04em;
+      font-feature-settings: "palt";
+      -webkit-font-smoothing: antialiased;
+      overflow-wrap: anywhere;
+      border-top: 4px solid var(--ink);
+      counter-reset: sec;
+    }
+
+    .num, .date, h2::before {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-variant-numeric: tabular-nums;
     }
 
     .wrap {
-      max-width: 820px;
+      max-width: 960px;
       margin: 0 auto;
-      padding: 0 16px;
+      padding: 0 32px;
     }
 
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    /* header */
     header.top {
       display: flex;
-      justify-content: flex-end;
-      gap: 8px;
-      padding-top: 20px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 0 0;
+      font-size: 11px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--muted);
     }
 
     .toggle {
-      border: 1px solid var(--line);
-      background: var(--card);
-      color: var(--fg);
-      border-radius: 999px;
-      padding: 4px 14px;
+      background: none;
+      border: 0;
+      border-bottom: 1px solid var(--ink);
+      color: var(--ink);
       font: inherit;
-      font-size: 13px;
+      letter-spacing: .2em;
+      padding: 2px 0;
       cursor: pointer;
     }
+    .toggle:hover { color: var(--blue); border-color: var(--blue); }
 
-    .toggle:hover {
-      border-color: var(--accent);
-    }
-
+    /* hero */
     .hero {
-      padding: 40px 0 28px;
-      border-bottom: 1px solid var(--line);
+      padding: 120px 0 80px;
+      border-bottom: 1px solid var(--ink);
     }
 
     .hero h1 {
-      font-family: "Noto Serif JP", serif;
-      font-weight: 600;
-      font-size: clamp(30px, 6vw, 42px);
+      font-size: clamp(38px, 7.5vw, 68px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: .14em;
       margin: 0;
-      letter-spacing: .02em;
     }
 
     .hero .sub {
-      color: var(--muted);
-      margin: 4px 0 16px;
-      font-size: 15px;
+      margin: 18px 0 56px;
+      font-size: 12px;
+      letter-spacing: .42em;
+      text-transform: uppercase;
+      color: var(--blue);
     }
 
     .hero .aff {
       margin: 0;
-      font-weight: 500;
+      padding-left: 16px;
+      border-left: 2px solid var(--blue);
+      font-size: 15px;
+      line-height: 1.7;
     }
 
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin: 18px 0 20px;
+      margin: 20px 0 0;
       padding: 0;
       list-style: none;
-    }
-
-    .tags li {
-      background: var(--accent-soft);
-      color: var(--accent);
-      padding: 2px 12px;
-      border-radius: 999px;
       font-size: 13px;
-      font-weight: 500;
+      color: var(--muted);
+    }
+    .tags li + li::before {
+      content: "/";
+      margin: 0 12px;
+      color: var(--line);
     }
 
     .links {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
-      font-size: 14px;
+      gap: 12px 32px;
+      margin-top: 56px;
     }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
+    .links a {
+      color: var(--ink);
+      font-size: 11px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--line);
+      transition: color .2s, border-color .2s;
     }
+    .links a::after { content: " \2197"; color: var(--blue); }
+    .links a:hover { color: var(--blue); border-color: var(--blue); text-decoration: none; }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
+    /* sections */
     section {
-      padding: 32px 0 8px;
+      display: grid;
+      grid-template-columns: 200px minmax(0, 1fr);
+      column-gap: 48px;
+      padding: 72px 0;
+      border-bottom: 1px solid var(--line);
+      counter-increment: sec;
     }
+    section > * { grid-column: 2; min-width: 0; }
+    section > h2 { grid-column: 1; grid-row: 1; }
 
     h2 {
+      margin: 0;
       font-size: 13px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--muted);
       font-weight: 700;
-      margin: 0 0 16px;
+      letter-spacing: .22em;
+      line-height: 1.6;
+    }
+    h2::before {
+      content: counter(sec, decimal-leading-zero);
+      display: block;
+      margin-bottom: 14px;
+      font-size: 34px;
+      font-weight: 300;
+      letter-spacing: .02em;
+      line-height: 1;
+      color: var(--blue);
     }
 
-    ul.timeline,
-    ul.pubs,
-    ul.plain {
+    section p { margin: 0; }
+    .field {
+      display: block;
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    ul.timeline, ul.pubs, ul.plain {
       list-style: none;
       margin: 0;
       padding: 0;
+      border-top: 1px solid var(--ink);
     }
 
     ul.timeline li {
       display: grid;
-      grid-template-columns: 150px 1fr;
-      gap: 12px;
-      padding: 8px 0;
-      border-bottom: 1px dashed var(--line);
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
     }
 
     .date {
-      color: var(--muted);
-      font-variant-numeric: tabular-nums;
-      font-size: 14px;
+      color: var(--blue);
+      font-size: 13px;
+      letter-spacing: .06em;
+      padding-top: 1px;
     }
 
     ul.pubs li {
-      padding: 14px 0;
-      border-bottom: 1px dashed var(--line);
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
     }
 
-    .pub-title {
-      font-weight: 500;
-    }
-
-    .pub-authors {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .pub-authors b {
-      color: var(--fg);
-      font-weight: 600;
-    }
-
-    .pub-meta {
-      font-size: 14px;
-    }
+    .pub-title { font-weight: 700; line-height: 1.7; }
+    .pub-authors { margin-top: 6px; font-size: 13px; color: var(--muted); }
+    .pub-authors b { color: var(--ink); font-weight: 700; }
+    .pub-meta { margin-top: 2px; font-size: 13px; color: var(--blue); }
 
     .badge {
       display: inline-block;
-      font-size: 11px;
+      margin-left: 10px;
+      padding: 0 8px;
       border: 1px solid var(--line);
-      border-radius: 4px;
-      padding: 0 6px;
-      margin-left: 6px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      line-height: 1.8;
       color: var(--muted);
-      vertical-align: 1px;
+      vertical-align: 2px;
     }
-
-    .badge.oral {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .grid2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0 40px;
-    }
+    .badge.oral { background: var(--ink); border-color: var(--ink); color: #fff; }
 
     ul.plain li {
-      padding: 6px 0;
-      border-bottom: 1px dashed var(--line);
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
     }
-
     ul.plain .small {
-      color: var(--muted);
-      font-size: 13px;
       display: block;
+      font-size: 12px;
+      color: var(--muted);
     }
 
     footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px 24px;
+      padding: 48px 0 72px;
+      font-size: 12px;
       color: var(--muted);
-      font-size: 13px;
-      padding: 40px 0 48px;
     }
 
     [data-lang-show="en"] .ja,
-    [data-lang-show="ja"] .en {
-      display: none;
-    }
+    [data-lang-show="ja"] .en { display: none; }
 
-    @media (max-width: 600px) {
-      ul.timeline li {
-        grid-template-columns: 1fr;
-        gap: 0;
-      }
-
-      .grid2 {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 720px) {
+      .wrap { padding: 0 16px; }
+      .hero { padding: 72px 0 56px; }
+      .hero h1 { letter-spacing: .08em; }
+      section { grid-template-columns: minmax(0, 1fr); padding: 56px 0; }
+      section > *, section > h2 { grid-column: 1; grid-row: auto; }
+      h2 { margin-bottom: 28px; }
+      ul.timeline li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
     }
   </style>
 </head>
@@ -261,8 +262,8 @@
 <body data-lang-show="ja">
   <div class="wrap">
     <header class="top">
+      <span>R. Tanaka</span>
       <button class="toggle" id="langBtn" type="button">English</button>
-      <button class="toggle" id="themeBtn" type="button" aria-label="Toggle theme">◐</button>
     </header>
 
     <div class="hero">
@@ -291,13 +292,12 @@
       <h2><span class="ja">研究分野</span><span class="en">Research</span></h2>
       <p class="ja">
         ひまわり8/9号搭載のAHIをはじめとする静止衛星データを用いて、地表面反射率の推定と大気補正手法の研究に取り組んでいます。エアロゾル・大気データセットの違いが推定結果に与える影響の評価や、アルゴリズム間（千葉大学CEReS、NASA
-        GeoNEX）の相互比較を通じて、陸域生態系モニタリングの高度化に貢献することを目指しています。<br><span style="color:var(--muted);font-size:14px">分野：環境・農学
+        GeoNEX）の相互比較を通じて、陸域生態系モニタリングの高度化に貢献することを目指しています。<span class="field">分野：環境・農学
           ／ 環境動態解析</span></p>
       <p class="en">I study land surface reflectance retrieval and atmospheric correction using geostationary satellite
         data, particularly from the Advanced Himawari Imager (AHI) aboard Himawari-8/9. By assessing how different aerosol
         and atmospheric datasets affect retrieval results, and by intercomparing retrieval algorithms (Chiba University
-        CEReS and NASA GeoNEX), I aim to advance terrestrial ecosystem monitoring.<br><span
-          style="color:var(--muted);font-size:14px">Field: Environmental science / Environmental dynamics</span></p>
+        CEReS and NASA GeoNEX), I aim to advance terrestrial ecosystem monitoring.<span class="field">Field: Environmental science / Environmental dynamics</span></p>
     </section>
 
     <section>
@@ -386,8 +386,7 @@
       </ul>
     </section>
 
-    <section class="grid2">
-      <div>
+    <section>
         <h2><span class="ja">担当経験のある授業</span><span class="en">Teaching</span></h2>
         <ul class="plain">
           <li><span class="ja">宇宙からの地球表層観測</span><span class="en">Earth Observation from Space</span><span
@@ -397,8 +396,9 @@
           <li><span class="ja">測量実習</span><span class="en">Surveying Practicum</span><span class="small"><span
                 class="ja">木更津工業高等専門学校</span><span class="en">NIT (KOSEN), Kisarazu College</span></span></li>
         </ul>
-      </div>
-      <div>
+    </section>
+
+    <section>
         <h2><span class="ja">所属学会</span><span class="en">Memberships</span></h2>
         <ul class="plain">
           <li><span class="ja">日本地球惑星科学連合</span><span class="en">Japan Geoscience Union</span><span
@@ -406,20 +406,19 @@
           <li><span class="ja">日本リモートセンシング学会</span><span class="en">The Remote Sensing Society of Japan</span><span
               class="small">2024.04 –</span></li>
         </ul>
-      </div>
     </section>
 
     <footer>
-      <span class="ja">最新の業績は <a href="https://researchmap.jp/tanakaryosuke">researchmap</a> をご覧ください。</span>
+      <span><span class="ja">最新の業績は <a href="https://researchmap.jp/tanakaryosuke">researchmap</a> をご覧ください。</span>
       <span class="en">See <a href="https://researchmap.jp/tanakaryosuke">researchmap</a> for the latest
-        achievements.</span>
-      <br>© 2026 Ryosuke Tanaka
+        achievements.</span></span>
+      <span>© 2026 Ryosuke Tanaka</span>
     </footer>
   </div>
   <script>
     (function () {
       var body = document.body, root = document.documentElement;
-      var langBtn = document.getElementById('langBtn'), themeBtn = document.getElementById('themeBtn');
+      var langBtn = document.getElementById('langBtn');
       function get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
       function set(k, v) { try { localStorage.setItem(k, v); } catch (e) { } }
       function applyLang(l) {
@@ -430,14 +429,6 @@
       var lang = get('lang') || ((navigator.language || 'ja').indexOf('ja') === 0 ? 'ja' : 'en');
       applyLang(lang);
       langBtn.onclick = function () { lang = lang === 'ja' ? 'en' : 'ja'; applyLang(lang); set('lang', lang); };
-      var theme = get('theme');
-      if (theme) root.setAttribute('data-theme', theme);
-      themeBtn.onclick = function () {
-        var dark = root.getAttribute('data-theme') ? root.getAttribute('data-theme') === 'dark'
-          : window.matchMedia('(prefers-color-scheme: dark)').matches;
-        theme = dark ? 'light' : 'dark';
-        root.setAttribute('data-theme', theme); set('theme', theme);
-      };
     })();
   </script>
 </body>
